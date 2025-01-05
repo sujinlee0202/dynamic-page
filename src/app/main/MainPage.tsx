@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Header from "../components/Header";
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 import image from "../../../public/newyork.jpg";
 
@@ -11,18 +12,49 @@ const MainPage = () => {
     <Wrap>
       <Header />
       <SectionnWrapper>
+        {/** Section 1 */}
         <Section>
           <SectionRight>
-            <H3>나만의 스마트한 브라우저</H3>
-            <h1>네이버 웨일로 일상을 바꿔보세요.</h1>
-            <p>
-              더 가볍게, 더 편하게, 내 일상에 딱 맞는 브라우저가 여기 있습니다.
-              새로운 인터넷으로 하루를 열어 보세요. 작지만 큰 변화가 시작됩니다.
-            </p>
-            <button>웨일 다운로드</button>
+            <motion.div
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ type: "spring", duration: 1.5 }}
+            >
+              <H3>나만의 스마트한 브라우저</H3>
+            </motion.div>
+            <motion.div
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ type: "spring", delay: 0.3, duration: 1.5 }}
+            >
+              <h1>네이버 웨일로 일상을 바꿔보세요.</h1>
+            </motion.div>
+            <motion.div
+              initial={{ y: 50, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ type: "spring", delay: 0.6, duration: 1.5 }}
+            >
+              <p>
+                더 가볍게, 더 편하게, 내 일상에 딱 맞는 브라우저가 여기
+                있습니다. 새로운 인터넷으로 하루를 열어 보세요. 작지만 큰 변화가
+                시작됩니다.
+              </p>
+              <button>웨일 다운로드</button>
+            </motion.div>
           </SectionRight>
           <ImageWrapper>
-            <Image src={image} alt='newyork' />
+            <motion.div
+              className='box'
+              initial={{ opacity: 0, scale: 0.2 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{
+                duration: 1,
+                delay: 0.3,
+                ease: [0, 0.71, 0.2, 1.01],
+              }}
+            >
+              <Image src={image} alt='newyork' />
+            </motion.div>
           </ImageWrapper>
         </Section>
       </SectionnWrapper>
@@ -69,7 +101,7 @@ const ImageWrapper = styled.div`
   align-items: center;
   padding: 2rem;
 
-  & > img {
+  & > div > img {
     border-radius: 100%;
     flex: 1;
     max-width: 100%;
